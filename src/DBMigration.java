@@ -12,7 +12,7 @@ public class DBMigration {
         DirectMapping dm = new DirectMapping(dbc.getDocumentByIndex(0));
 
         System.out.println("\n--Dynamisk analyse av data--");
-        //new DynamicAnalyzer(dbc, dm.getListfields());
+        new DynamicAnalyzer(dbc, dm.getListfields());
 
         System.out.println("---Statisk analyse av spørringer-");
         //new QueryAnalyzer(dbc);
