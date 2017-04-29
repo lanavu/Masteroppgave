@@ -8,27 +8,27 @@ public class QueryAnalyzer {
     DBCollection dbc;
 
     private class Aggregation{
-        ArrayList<PiplineEntry> pipeline = new ArrayList<>();
+        ArrayList<PipelineEntry> pipeline = new ArrayList<>();
 
 
         Aggregation(){
             System.out.println("Query Analyzer");
             //Gjennomsnittlig innbyggertall i hver stat
-            pipeline.add(new PiplineEntry(new String[]{"$city","$state"}));
-            pipeline.add(new PiplineEntry(new String[]{"$state"}));
+            pipeline.add(new PipelineEntry(new String[]{"$city","$state"}));
+            pipeline.add(new PipelineEntry(new String[]{"$state"}));
             //End gjennomsnittlig innbyggertall i hver stat
         }
 
-        ArrayList<PiplineEntry> getPipeline(){
+        ArrayList<PipelineEntry> getPipeline(){
             return pipeline;
         }
     }
 
-    private class PiplineEntry{
+    private class PipelineEntry {
         //Begrenser til funksjonene under
         String [] group;
 
-        PiplineEntry(String [] group){
+        PipelineEntry(String [] group){
             this.group = group;
 
         }
@@ -50,9 +50,9 @@ public class QueryAnalyzer {
      *
      */
     public void aggregateAnalyzer(){
-        ArrayList<PiplineEntry> pipe = new Aggregation().getPipeline();
+        ArrayList<PipelineEntry> pipe = new Aggregation().getPipeline();
         int counter = 1;
-        for(PiplineEntry entry: pipe){
+        for(PipelineEntry entry: pipe){
             //Group-delen
             System.out.println("--- " + counter++ + ". pipe entry ---");
             if(entry.getGroup().length > 1){

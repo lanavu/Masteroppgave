@@ -21,7 +21,6 @@ public class DirectMapping {
         recursiveMap(doc.getCollectionName(), doc.getMap());
     }
 
-
     public void recursiveMap(String currentEntity, HashMap<String, String> m){
 
         for(String key : m.keySet()){
@@ -34,8 +33,7 @@ public class DirectMapping {
                 newPredicate(currentEntity, "1", "n", key);
                 recursiveMap(key, toJson.jsonToMap(value)); //Recursive step
 
-            } else
-            if(firstchar == '['){
+            }else if(firstchar == '['){
                 listfields.add(key);
                 String firstElem = jsonToArray(value).get(0);
                 newEntity(key);
@@ -49,7 +47,7 @@ public class DirectMapping {
                     newPredicate(key, "1", "1", key+"_value");
 
                 }
-            } else{
+            }else{
                 newValueType(key);
                 newPredicate(currentEntity, "1", "n", key);
 
